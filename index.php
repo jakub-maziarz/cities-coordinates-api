@@ -1,5 +1,5 @@
 <?php
-require_once('./config/dbconfig.php');
+include './config/dbconfig.php';
 
 if (isset($_GET['name'])) {
     $name = $_GET['name'];
