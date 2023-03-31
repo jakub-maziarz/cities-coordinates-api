@@ -8,11 +8,11 @@ if (isset($_GET['name'])) {
     $sql = "SELECT * FROM city WHERE name LIKE '%$escaped_name%'";
     $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) > 50) {
-        echo json_encode(array('message' => 'Provide more precise city name - too many matches'));
-    } else {
+    if (mysqli_num_rows($result) > 0) {
         $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        echo json_encode($data);
+        echo json_encode(array('cities' => $data));
+    } else {
+        echo json_encode(array('message' => 'City not found'));
     }
 } else {
     echo json_encode(array('message' => 'Provide city name'));
