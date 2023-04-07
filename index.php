@@ -1,7 +1,7 @@
 <?php
 include './config/dbconfig.php';
 
-if (isset($_GET['name'])) {
+if (isset($_GET['name']) && !empty($_GET['name'])) {
     $name = $_GET['name'];
     $escaped_name = $conn->real_escape_string($name);
 
